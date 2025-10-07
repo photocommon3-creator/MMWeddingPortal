@@ -1,0 +1,61 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #fffaf0;
+  color: #333;
+}
+
+header.hero {
+  text-align: center;
+  background: #f8e1e7;
+  padding: 50px 20px;
+}
+
+header.hero h1 {
+  font-size: 3em;
+  margin: 0;
+  color: #d94f6f;
+}
+
+header.hero p {
+  font-size: 1.5em;
+  color: #7f3f4f;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #d94f6f;
+}
+
+.event {
+  margin-bottom: 30px;
+  padding: 15px;
+  border-left: 5px solid #d94f6f;
+  background: #fff0f2;
+}
+
+.invite-video {
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: 20px auto;
+}
+
+a {
+  color: #d94f6f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
