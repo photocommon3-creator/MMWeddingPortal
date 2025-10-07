@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
       WordCloud(canvas, {
         list: wordArray,
         gridSize: 12,
-        weightFactor: 3,
+        weightFactor: 15,
         fontFamily: 'Times, serif',
          color: function(word, weight) {
     const palette = ['#d94f6f', '#f7c59f', '#f1c40f']; // blush pink, soft pink, gold
@@ -87,6 +87,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
