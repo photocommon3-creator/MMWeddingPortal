@@ -1,9 +1,5 @@
-function drawWordCloud() {
+document.addEventListener("DOMContentLoaded", function() {
   const wordCloudContainer = document.getElementById('wordCloudContainer');
-  
-  // Clear previous canvas if exists
-  wordCloudContainer.innerHTML = "";
-
   const canvas = document.createElement('canvas');
   canvas.width = 800;
   canvas.height = 400;
@@ -14,6 +10,7 @@ function drawWordCloud() {
   fetch(sheetUrl)
     .then(response => response.text())
     .then(csvText => {
+      // Convert CSV to array of words
       const rows = csvText.split("\n").slice(1); // skip header
       const words = rows.map(row => row.split(",")[1].trim()).filter(Boolean);
 
@@ -23,35 +20,21 @@ function drawWordCloud() {
         counts[word] = (counts[word] || 0) + 1;
       });
 
+      // Convert to format for wordcloud2.js
       const wordArray = Object.entries(counts);
 
-      // Draw cloud
+      // Draw word cloud
       WordCloud(canvas, {
         list: wordArray,
         gridSize: 8,
         weightFactor: 10,
         fontFamily: 'Times, serif',
-       color: function(word, weight) {
-        const colors = ['#d94f6f', '#f7c59f', '#f1c40f', '#e91e63', '#ffb6c1'];
-        return colors[Math.floor(Math.random() * colors.length)];
-      },
-      backgroundColor: '#fffaf0'
+         color: function(word, weight) {
+    const palette = ['#d94f6f', '#f7c59f', '#f1c40f']; // blush pink, soft pink, gold
+    return palette[Math.floor(Math.random() * palette.length)];
+  },
+  backgroundColor: '#fffaf0'
       });
     })
     .catch(err => console.error("Error loading CSV:", err));
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  drawWordCloud();
 });
-
-
-// Refresh every 30 seconds (30000 ms)
-setInterval(drawWordCloud, 5000);
-
-
-
-
-
-
-
