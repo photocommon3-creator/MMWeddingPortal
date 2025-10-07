@@ -43,5 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
   drawCloud()
 }
 
-setInterval(drawCloud, 30000);
+setInterval(drawCloud, 5000);
+
 
