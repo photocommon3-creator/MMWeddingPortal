@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const wordCloudContainer = document.getElementById('wordCloudContainer');
   
   const canvas = document.createElement('canvas');
-  canvas.width = 400;
+  canvas.width = 600;
   canvas.height = 400;
   wordCloudContainer.appendChild(canvas);
 
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
       // Draw word cloud
       WordCloud(canvas, {
         list: wordArray,
-        gridSize: 8,
-        weightFactor: 10,
+        gridSize: 3,
+        weightFactor: 2,
         fontFamily: 'Times, serif',
          color: function(word, weight) {
     const palette = ['#d94f6f', '#f7c59f', '#f1c40f']; // blush pink, soft pink, gold
@@ -87,6 +87,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
