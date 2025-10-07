@@ -34,11 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
     let weightFactor = 0;
 
     if (totalWords < 10) {
-      weightFactor = 60; // few words → large size
+      weightFactor = 40; // few words → large size
     } else if (totalWords < 30) {
-      weightFactor = 50;
+      weightFactor = 30;
     } else if (totalWords < 80) {
-      weightFactor = 25;
+      weightFactor = 15;
     } else {
       weightFactor = 10; // many words → smaller size
     }
@@ -122,6 +122,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
