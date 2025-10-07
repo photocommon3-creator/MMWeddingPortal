@@ -41,3 +41,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+$(document).ready(function(){
+  const $carousel = $('#carousel');
+  const $images = $carousel.children();
+  let currentIndex = 0;
+  const totalImages = $images.length;
+
+  function showSlide(index) {
+    const width = $images.eq(0).outerWidth(true);
+    $carousel.css('transform', `translateX(-${index * width}px)`);
+  }
+
+  $('#next').click(function(){
+    currentIndex = (currentIndex + 1) % totalImages;
+    showSlide(currentIndex);
+  });
+
+  $('#prev').click(function(){
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    showSlide(currentIndex);
+  });
+
+  // Tabs functionality
+ $('.tab-btn').click(function() {
+    const tab = $(this).data('tab');
+
+    // Show selected tab content
+    $('.tab-content').hide();
+    $('#' + tab).fadeIn(300);
+
+    // Update active button styling
+    $('.tab-btn').removeClass('bg-pink-500 text-white shadow-lg');
+    $('.tab-btn').addClass('bg-pink-100 text-pink-700');
+    $(this).removeClass('bg-pink-100 text-pink-700');
+    $(this).addClass('bg-pink-500 text-white shadow-lg');
+  });
+
+  // Initialize first tab as active
+  $('.tab-btn').first().click();
+
+  // Optional: Auto-slide every 5 seconds
+  setInterval(function(){
+    currentIndex = (currentIndex + 1) % totalImages;
+    showSlide(currentIndex);
+  }, 10000);
+});
+
+
+
+
