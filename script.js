@@ -1,11 +1,9 @@
-
-
-function drawCloud(){
+function drawWordCloud() {
   const wordCloudContainer = document.getElementById('wordCloudContainer');
-
-   // Clear previous canvas if exists
-  wordCloudContainer.innerHTML = "";
   
+  // Clear previous canvas if exists
+  wordCloudContainer.innerHTML = "";
+
   const canvas = document.createElement('canvas');
   canvas.width = 800;
   canvas.height = 400;
@@ -16,7 +14,6 @@ function drawCloud(){
   fetch(sheetUrl)
     .then(response => response.text())
     .then(csvText => {
-      // Convert CSV to array of words
       const rows = csvText.split("\n").slice(1); // skip header
       const words = rows.map(row => row.split(",")[1].trim()).filter(Boolean);
 
@@ -26,10 +23,9 @@ function drawCloud(){
         counts[word] = (counts[word] || 0) + 1;
       });
 
-      // Convert to format for wordcloud2.js
       const wordArray = Object.entries(counts);
 
-      // Draw word cloud
+      // Draw cloud
       WordCloud(canvas, {
         list: wordArray,
         gridSize: 8,
@@ -40,14 +36,18 @@ function drawCloud(){
       });
     })
     .catch(err => console.error("Error loading CSV:", err));
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  drawWordCloud();
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  drawCloud()
-}
+// Refresh every 30 seconds (30000 ms)
+setInterval(drawWordCloud, 5000);
 
-setInterval(drawCloud, 5000);
+
+
 
 
 
