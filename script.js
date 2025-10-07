@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let weightFactor = 0;
 
     if (totalWords < 10) {
-      weightFactor = 80; // few words → large size
+      weightFactor = 60; // few words → large size
     } else if (totalWords < 30) {
       weightFactor = 50;
     } else if (totalWords < 80) {
@@ -53,7 +53,7 @@ if (totalWords < 10) {
 }
 
     // Further adjust for max frequency
-    weightFactor = weightFactor * (40 / (maxFreq + 5));
+    //weightFactor = weightFactor * (40 / (maxFreq + 5));
 
     console.log("Dynamic weightFactor:", weightFactor);
 
@@ -119,6 +119,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
