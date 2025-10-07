@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const wordCloudContainer = document.getElementById('wordCloudContainer');
   
   const canvas = document.createElement('canvas');
-  canvas.width = 400;
+  canvas.width = 800;
   canvas.height = 400;
   wordCloudContainer.appendChild(canvas);
 
@@ -119,6 +119,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
