@@ -23,12 +23,45 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Convert to format for wordcloud2.js
       const wordArray = Object.entries(counts);
+       // Calculate dynamic weight factor
+    const maxFreq = Math.max(...wordArray.map(([_, freq]) => freq));
+    const totalWords = wordArray.length;
+
+    // Adjust scaling based on dataset size
+    let weightFactor = 0;
+
+    if (totalWords < 10) {
+      weightFactor = 80; // few words → large size
+    } else if (totalWords < 30) {
+      weightFactor = 50;
+    } else if (totalWords < 80) {
+      weightFactor = 25;
+    } else {
+      weightFactor = 10; // many words → smaller size
+    }
+
+      // Dynamic gridSize based on number of words
+let gridSize;
+if (totalWords < 10) {
+  gridSize = 6;  // tighter for few words
+} else if (totalWords < 30) {
+  gridSize = 8;
+} else if (totalWords < 80) {
+  gridSize = 10;
+} else {
+  gridSize = 12; // more words → more spacing
+}
+
+    // Further adjust for max frequency
+    weightFactor = weightFactor * (40 / (maxFreq + 5));
+
+    console.log("Dynamic weightFactor:", weightFactor);
 
       // Draw word cloud
       WordCloud(canvas, {
         list: wordArray,
-        gridSize: 12,
-        weightFactor: 15,
+        gridSize: gridSize,
+        weightFactor: weightFactor,
         fontFamily: 'Times, serif',
          color: function(word, weight) {
     const palette = ['#d94f6f', '#f7c59f', '#f1c40f']; // blush pink, soft pink, gold
@@ -87,6 +120,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
