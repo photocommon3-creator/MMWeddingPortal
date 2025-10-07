@@ -2,6 +2,10 @@
 
 function drawCloud(){
   const wordCloudContainer = document.getElementById('wordCloudContainer');
+
+   // Clear previous canvas if exists
+  wordCloudContainer.innerHTML = "";
+  
   const canvas = document.createElement('canvas');
   canvas.width = 800;
   canvas.height = 400;
@@ -44,5 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 setInterval(drawCloud, 5000);
+
 
 
