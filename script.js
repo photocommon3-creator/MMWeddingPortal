@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const wordCloudContainer = document.getElementById('wordCloudContainer');
   
   const canvas = document.createElement('canvas');
-  canvas.width = 400;
-  canvas.height = 400;
+  canvas.width = 100;
+  canvas.height = 100;
   wordCloudContainer.appendChild(canvas);
 
   const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQjJ3vUagj6CaEIg104K3V0ITstLLQkrkUGrH93hjK6h7sZ_fzxhuyOHPHLU3tBjFrAp-sGdP1kLRHe/pub?gid=438313295&single=true&output=csv";
@@ -87,6 +87,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
