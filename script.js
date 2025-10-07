@@ -63,7 +63,7 @@ if (totalWords < 10) {
       // Draw word cloud
       WordCloud(canvas, {
         list: wordArray,
-        weightFactor: 50,
+        weightFactor: weightFactor,
         fontFamily: 'Times, serif',
          color: function(word, weight) {
     const palette = ['#d94f6f', '#f7c59f', '#f1c40f']; // blush pink, soft pink, gold
@@ -122,6 +122,7 @@ $(document).ready(function(){
     showSlide(currentIndex);
   }, 10000);
 });
+
 
 
 
