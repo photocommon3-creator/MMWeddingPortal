@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function() {
+
+
+function drawCloud(){
   const wordCloudContainer = document.getElementById('wordCloudContainer');
   const canvas = document.createElement('canvas');
   canvas.width = 800;
@@ -35,3 +37,11 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .catch(err => console.error("Error loading CSV:", err));
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  drawCloud()
+}
+
+setInterval(drawCloud, 30000);
+
