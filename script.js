@@ -31,8 +31,11 @@ function drawWordCloud() {
         gridSize: 8,
         weightFactor: 10,
         fontFamily: 'Times, serif',
-        color: '#d94f6f',
-        backgroundColor: '#fffaf0'
+       color: function(word, weight) {
+        const colors = ['#d94f6f', '#f7c59f', '#f1c40f', '#e91e63', '#ffb6c1'];
+        return colors[Math.floor(Math.random() * colors.length)];
+      },
+      backgroundColor: '#fffaf0'
       });
     })
     .catch(err => console.error("Error loading CSV:", err));
@@ -45,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Refresh every 30 seconds (30000 ms)
 setInterval(drawWordCloud, 5000);
+
 
 
 
